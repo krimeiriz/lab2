@@ -15,7 +15,7 @@ namespace labWork2
 
         private ContactRepository() { }
 
-        public ContactRepository getInstance()
+        public static ContactRepository getInstance()
         {
             if (Instance == null)
                 Instance = new ContactRepository();
@@ -46,7 +46,7 @@ namespace labWork2
             return resultSet;
         }
 
-        public List<Contact>FindByFirstName(string firstname)
+        public List<Contact>FindByFirstname(string firstname)
         {
             return FindContactsByPredicate(c => 
             {
@@ -56,7 +56,7 @@ namespace labWork2
         }
 
 
-        public List<Contact> FindByLastName(string lastname)
+        public List<Contact> FindByLastname(string lastname)
         {
             return FindContactsByPredicate(c =>
             {
@@ -65,7 +65,7 @@ namespace labWork2
             });
         }
 
-        public List<Contact> FindByFullName(string firstName, string lastname)
+        public List<Contact> FindByFullname(string firstName, string lastname)
         {
             return FindContactsByPredicate(c =>
             {
@@ -120,7 +120,8 @@ namespace labWork2
 
         public Contact(string firstName, string lastName, string phoneNumber, string email)
         {
-            Id = ContactRepository.currentId++;
+            ContactRepository.currentId++;
+            Id = ContactRepository.currentId;
             FirstName = firstName;
             LastName = lastName;
             PhoneNumber = phoneNumber;
@@ -135,7 +136,14 @@ namespace labWork2
             LastName = lastName;
             PhoneNumber = phoneNumber;
             Email = email;
+        }
 
+        public override string ToString()
+        {
+            return "#" + Id + " Name:" + FirstName + "\n" +
+                "Lastname: " + LastName + "\n" +
+                "Phone number: " + PhoneNumber + "\n" +
+                "E-mail: " + Email + "\n";
         }
     }
 }
