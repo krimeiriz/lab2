@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace labWork2
 {
-    internal class ContactRepository
+    public class ContactRepository
     {
         private static ContactRepository Instance;
 
-        internal static int currentId;
-        private static Dictionary<int, Contact> Contacts = new Dictionary<int, Contact>();
+        internal static int currentId = 0;
+        private readonly Dictionary<int, Contact> Contacts = new Dictionary<int, Contact>();
 
         private ContactRepository() { }
 
-        public static ContactRepository getInstance()
+        public static ContactRepository GetInstance()
         {
             if (Instance == null)
                 Instance = new ContactRepository();
@@ -109,9 +109,15 @@ namespace labWork2
                         || eLower.Contains(fieldLower);
             });
         }
+
+        public void ResetRepository() 
+        {
+            currentId = 1;
+            Contacts.Clear();
+        }
     }
 
-    struct Contact{
+    public struct Contact{
         public int Id { private set; get; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

@@ -54,7 +54,7 @@ namespace labWork2
 
         private static void PrintAllContacts() 
         {
-            var contacts = ContactRepository.getInstance().GetAllContacts();
+            var contacts = ContactRepository.GetInstance().GetAllContacts();
             PrintContactsList(contacts);
         }
 
@@ -65,7 +65,7 @@ namespace labWork2
             var phoneNumber = NotEmptyInput("Enter phone number: ");
             var email = NotEmptyInput("Enter e-mail: ");
             Contact contact = new Contact(firstname,lastname,phoneNumber,email);
-            ContactRepository.getInstance().AddContact(contact);
+            ContactRepository.GetInstance().AddContact(contact);
             Console.WriteLine("Contact added.");
         }
 
@@ -147,40 +147,40 @@ namespace labWork2
         private static void FindByFirstname() 
         {
             var firstname = NotEmptyInput("Enter firstname or its port: ");
-            var resultSet =  ContactRepository.getInstance().FindByFirstname(firstname);
+            var resultSet =  ContactRepository.GetInstance().FindByFirstname(firstname);
             PrintContactsList(resultSet);
         }
         private static void FindByLastname()
         {
             var lastname = NotEmptyInput("Enter lastname or its port: ");
-            var resultSet = ContactRepository.getInstance().FindByLastname(lastname);
+            var resultSet = ContactRepository.GetInstance().FindByLastname(lastname);
             PrintContactsList(resultSet);
         }
         private static void FindByFirstAndLastname()
         {
             var firstname = NotEmptyInput("Enter firstname or its port: ");
             var lastname = NotEmptyInput("Enter lastname or its port");
-            var resultSet = ContactRepository.getInstance().FindByFullname(firstname, lastname);
+            var resultSet = ContactRepository.GetInstance().FindByFullname(firstname, lastname);
             PrintContactsList(resultSet);
         }
 
         private static void FindByPhoneNumber() 
         {
             var phoneNumber = NotEmptyInput("Enter phone number or its part: ");
-            var resultSet = ContactRepository.getInstance().FindByPhoneNumber(phoneNumber);
+            var resultSet = ContactRepository.GetInstance().FindByPhoneNumber(phoneNumber);
             PrintContactsList(resultSet);
         }
         private static void FindByEmail()
         {
             var email = NotEmptyInput("Enter email or its part: ");
-            var resultSet = ContactRepository.getInstance().FindByEmail(email);
+            var resultSet = ContactRepository.GetInstance().FindByEmail(email);
             PrintContactsList(resultSet);
         }
 
         private static void FindByWholeFields()
         {
             var any = NotEmptyInput("Enter a part of any field: ");
-            var resultSet = ContactRepository.getInstance().FindByAnyField(any);
+            var resultSet = ContactRepository.GetInstance().FindByAnyField(any);
             PrintContactsList(resultSet);
         }
 
