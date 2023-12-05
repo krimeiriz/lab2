@@ -1,2 +1,5 @@
 bin
 obj
+.vs
+labWork2.sln
+packages
